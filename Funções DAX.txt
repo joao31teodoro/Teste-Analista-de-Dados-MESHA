@@ -1,0 +1,43 @@
+# Funções DAX
+
+# Ausentes
+Ausentes = CALCULATE(COUNT(GERAL[NUMERO_INSCRICAO]), 
+                        FILTER(GERAL, GERAL[PRESENCA_CIENCIA_HUMANA] <> 1),
+                        FILTER(GERAL, GERAL[PRESENCA_CIENCIA_NATUREZA] <> 1), 
+                        FILTER(GERAL, GERAL[PRESENCA_LINGUAGEM_CODIGO] <> 1),
+                        FILTER(GERAL, GERAL[PRESENCA_MATEMATICA] <> 1))
+                        
+# Inscritos
+Inscritos = CALCULATE(COUNT(GERAL[NUMERO_INSCRICAO]))                        
+
+# Presentes
+Presentes = CALCULATE(COUNT(GERAL[NUMERO_INSCRICAO]), 
+                        FILTER(GERAL, GERAL[PRESENCA_CIENCIA_HUMANA] = 1),
+                        FILTER(GERAL, GERAL[PRESENCA_CIENCIA_NATUREZA] = 1), 
+                        FILTER(GERAL, GERAL[PRESENCA_LINGUAGEM_CODIGO] = 1), 
+                        FILTER(GERAL, GERAL[PRESENCA_MATEMATICA] = 1))
+
+# MedidaCH
+MedidaCH = CALCULATE(SUM(MEDIA_DISCIPLINA[Media]),
+                        FILTER(MEDIA_DISCIPLINA, 
+                        MEDIA_DISCIPLINA[Disciplina] = "NU_NOTA_CH"))
+
+# MedidaCN
+MedidaCN = CALCULATE(SUM(MEDIA_DISCIPLINA[Media]), 
+                        FILTER(MEDIA_DISCIPLINA, 
+                        MEDIA_DISCIPLINA[Disciplina] = "NU_NOTA_CN"))
+
+# MedidaLC
+MedidaLC = CALCULATE(SUM(MEDIA_DISCIPLINA[Media]), 
+                        FILTER(MEDIA_DISCIPLINA, 
+                        MEDIA_DISCIPLINA[Disciplina] = "NU_NOTA_LC"))
+
+# MedidaMT
+MedidaMT = CALCULATE(SUM(MEDIA_DISCIPLINA[Media]),
+                        FILTER(MEDIA_DISCIPLINA, 
+                        MEDIA_DISCIPLINA[Disciplina] = "NU_NOTA_MT"))
+
+# MedidaREDACAO
+MedidaREDACAO = CALCULATE(SUM(MEDIA_DISCIPLINA[Media]), 
+                        FILTER(MEDIA_DISCIPLINA, 
+                        MEDIA_DISCIPLINA[Disciplina] = "NU_NOTA_REDACAO"))
